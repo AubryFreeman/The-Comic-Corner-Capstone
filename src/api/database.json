@@ -1,0 +1,114 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "standard"
+    },
+    {
+      "id": 2,
+      "name": "comics"
+    },
+    {
+      "id": 3,
+      "name": "manga"
+    },
+    {
+      "id": 4,
+      "name": "sliceOfLife"
+    },
+    {
+      "id": 5,
+      "name": "humor"
+    },
+    {
+      "id": 6,
+      "name": "alternative"
+    },
+    {
+      "id": 7,
+      "name": "luxury"
+    }
+  ],
+  "genres": [
+    {
+      "id": 1,
+      "name": "action"
+    },
+    {
+      "id": 2,
+      "name": "horror"
+    },
+    {
+      "id": 3,
+      "name": "adventure"
+    },
+    {
+      "id": 4,
+      "name": "fantasy"
+    },
+    {
+      "id": 5,
+      "name": "crime"
+    },
+    {
+      "id": 6,
+      "name": "superHero"
+    },
+    {
+      "id": 7,
+      "name": "mystery"
+    }
+  ],
+  "art-styles": [
+    {
+      "id": 1,
+      "name": "toonStyle"
+    },
+    {
+      "id": 2,
+      "name": "mangaStyle"
+    },
+    {
+      "id": 3,
+      "name": "westernComicStyle"
+    },
+    {
+      "id": 4,
+      "name": "superHeroStyle"
+    },
+    {
+      "id": 5,
+      "name": "sinCityStyle"
+    }
+  ],
+  "languages": [
+    {
+      "id": 1,
+      "name": "english"
+    },
+    {
+      "id": 2,
+      "name": "chinese"
+    },
+    {
+      "id": 3,
+      "name": "japanese"
+    },
+    {
+      "id": 4,
+      "name": "french"
+    },
+    {
+      "id": 5,
+      "name": "spanish"
+    },
+    {
+      "id": 6,
+      "name": "russian"
+    },
+    {
+      "id": 7,
+      "name": "italian"
+    }
+  ]
+}
