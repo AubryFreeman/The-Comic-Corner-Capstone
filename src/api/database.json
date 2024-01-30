@@ -1,4 +1,88 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "name": "user1",
+      "email": "user1@example.com"
+    },
+    {
+      "id": 2,
+      "name": "user2",
+      "email": "user2@example.com"
+    },
+    {
+      "id": 3,
+      "name": "user3",
+      "email": "user3@example.com"
+    },
+    {
+      "id": 4,
+      "name": "user4",
+      "email": "user4@example.com"
+    },
+    {
+      "id": 5,
+      "name": "user5",
+      "email": "user5@example.com"
+    }
+  ],
+  "comics": [
+    {
+      "id": 1,
+      "name": "Comic1",
+      "userId": 1,
+      "categoryId": 2,
+      "genreId": 1,
+      "artStyleId": 3,
+      "languageId": 1,
+      "pageLength": 25,
+      "ageRestriction": "yes"
+    },
+    {
+      "id": 2,
+      "name": "Comic2",
+      "userId": 2,
+      "categoryId": 2,
+      "genreId": 2,
+      "artStyleId": 2,
+      "languageId": 2,
+      "pageLength": 15,
+      "ageRestriction": "no"
+    },
+    {
+      "id": 3,
+      "name": "Comic3",
+      "userId": 3,
+      "categoryId": 2,
+      "genreId": 3,
+      "artStyleId": 4,
+      "languageId": 3,
+      "pageLength": 20,
+      "ageRestriction": "yes"
+    },
+    {
+      "id": 4,
+      "name": "Comic4",
+      "userId": 4,
+      "categoryId": 2,
+      "genreId": 4,
+      "artStyleId": 5,
+      "languageId": 4,
+      "pageLength": 30,
+      "ageRestriction": "no"
+    },
+    {
+      "id": 5,
+      "name": "Comic5",
+      "userId": 5,
+      "categoryId": 2,
+      "genreId": 5,
+      "artStyleId": 1,
+      "languageId": 5,
+      "pageLength": 10,
+      "ageRestriction": "yes"
+    }
+  ],
   "categories": [
     {
       "id": 1,
@@ -59,7 +143,7 @@
       "name": "mystery"
     }
   ],
-  "art-styles": [
+  "artstyles": [
     {
       "id": 1,
       "name": "toonStyle"
@@ -88,27 +172,27 @@
     },
     {
       "id": 2,
-      "name": "chinese"
-    },
-    {
-      "id": 3,
       "name": "japanese"
     },
     {
-      "id": 4,
+      "id": 3,
       "name": "french"
     },
     {
-      "id": 5,
+      "id": 4,
       "name": "spanish"
     },
     {
-      "id": 6,
+      "id": 5,
       "name": "russian"
     },
     {
-      "id": 7,
+      "id": 6,
       "name": "italian"
+    },
+    {
+      "id": 7,
+      "name": "chinese"
     }
   ]
 }
