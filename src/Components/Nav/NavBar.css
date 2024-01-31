@@ -1,10 +1,10 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: #333;
+  align-items: center;
+  background-color: #212529; /* Dark gray background */
   padding: 1rem;
-  list-style: none;
-  border: 2px solid white;
+  border-bottom: 2px solid #fff; /* White border bottom */
 }
 
 .navbar-item {
@@ -12,12 +12,13 @@
 }
 
 .navbar-link {
-  color: white;
+  color: #fff; /* White text */
   text-decoration: none;
   padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
 .navbar-link:hover {
-  background-color: white;
-  color: #333;
+  background-color: #ffc107; /* Yellow background on hover */
+  color: #212529; /* Dark gray text on hover */
 }
