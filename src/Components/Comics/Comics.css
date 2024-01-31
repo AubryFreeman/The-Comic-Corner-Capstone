@@ -1,0 +1,13 @@
+.comics-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.comic {
+  width: calc(33.33% - 20px); /* Adjust the width as per your requirement */
+  background-color: white; /* Make them white */
+  margin-bottom: 20px; /* Add some bottom margin for space */
+  box-sizing: border-box; /* Ensure padding and border don't affect width */
+  padding: 10px; /* Add padding for spacing within each comic */
+}
