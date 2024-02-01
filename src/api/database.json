@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "name": "user1",
-      "email": "user1@example.com"
+      "name": "a",
+      "email": "a@a.a"
     },
     {
       "id": 2,
@@ -31,7 +31,7 @@
       "id": 1,
       "name": "Comic1",
       "userId": 1,
-      "categoryId": 2,
+      "categoryId": 1,
       "genreId": 1,
       "artStyleId": 3,
       "languageId": 1,
@@ -53,7 +53,7 @@
       "id": 3,
       "name": "Comic3",
       "userId": 3,
-      "categoryId": 2,
+      "categoryId": 4,
       "genreId": 3,
       "artStyleId": 4,
       "languageId": 3,
@@ -64,7 +64,7 @@
       "id": 4,
       "name": "Comic4",
       "userId": 4,
-      "categoryId": 2,
+      "categoryId": 3,
       "genreId": 4,
       "artStyleId": 5,
       "languageId": 4,
@@ -75,7 +75,7 @@
       "id": 5,
       "name": "Comic5",
       "userId": 5,
-      "categoryId": 2,
+      "categoryId": 5,
       "genreId": 5,
       "artStyleId": 1,
       "languageId": 5,
@@ -86,113 +86,113 @@
   "categories": [
     {
       "id": 1,
-      "name": "standard"
+      "name": "Standard"
     },
     {
       "id": 2,
-      "name": "comics"
+      "name": "Comics"
     },
     {
       "id": 3,
-      "name": "manga"
+      "name": "Manga"
     },
     {
       "id": 4,
-      "name": "sliceOfLife"
+      "name": "Slice of Life"
     },
     {
       "id": 5,
-      "name": "humor"
+      "name": "Humor"
     },
     {
       "id": 6,
-      "name": "alternative"
+      "name": "Alternative"
     },
     {
       "id": 7,
-      "name": "luxury"
+      "name": "Luxury"
     }
   ],
   "genres": [
     {
       "id": 1,
-      "name": "action"
+      "name": "Action"
     },
     {
       "id": 2,
-      "name": "horror"
+      "name": "Horror"
     },
     {
       "id": 3,
-      "name": "adventure"
+      "name": "Adventure"
     },
     {
       "id": 4,
-      "name": "fantasy"
+      "name": "Fantasy"
     },
     {
       "id": 5,
-      "name": "crime"
+      "name": "Crime"
     },
     {
       "id": 6,
-      "name": "superHero"
+      "name": "SuperHero"
     },
     {
       "id": 7,
-      "name": "mystery"
+      "name": "Mystery"
     }
   ],
-  "artstyles": [
+  "artStyles": [
     {
       "id": 1,
-      "name": "toonStyle"
+      "name": "Toon"
     },
     {
       "id": 2,
-      "name": "mangaStyle"
+      "name": "Manga"
     },
     {
       "id": 3,
-      "name": "westernComicStyle"
+      "name": "Western"
     },
     {
       "id": 4,
-      "name": "superHeroStyle"
+      "name": "SuperHero"
     },
     {
       "id": 5,
-      "name": "sinCityStyle"
+      "name": "Sin City"
     }
   ],
   "languages": [
     {
       "id": 1,
-      "name": "english"
+      "name": "English"
     },
     {
       "id": 2,
-      "name": "japanese"
+      "name": "Japanese"
     },
     {
       "id": 3,
-      "name": "french"
+      "name": "French"
     },
     {
       "id": 4,
-      "name": "spanish"
+      "name": "Spanish"
     },
     {
       "id": 5,
-      "name": "russian"
+      "name": "Russian"
     },
     {
       "id": 6,
-      "name": "italian"
+      "name": "Italian"
     },
     {
       "id": 7,
-      "name": "chinese"
+      "name": "Chinese"
     }
   ]
 }
