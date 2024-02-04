@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -67,5 +67,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
+
 # The-Comic-Corner-Capstone
+
+# Welcome to The Comic Corner
+
+When you chat with an up-and-coming comic creator about their dreams, they often talk about wanting to get published or to have their work recognized. And honestly, I'm right there with them on that. There's this whole world of comics out there made by incredibly talented folks who just never get their chance to shine. Making a comic is no small feat—it takes heaps of time and skill. Many creators pour their hearts into their work, only to struggle to get the attention they deserve. And let's not forget, not every comic is about caped crusaders; some dive into deep stories, showcase complex characters, or are strictly for grown-up audiences. It's a common misconception that comics are just for kids.
+
+But here's where my app steps in to help out.
+
+Welcome to The Comic Den: Where Imagination Knows No Bounds. No more flying under the radar for these creators who pour their souls into their art. With my app, they've got a platform to share their comics and finally get the recognition they've been craving.

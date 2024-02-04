@@ -1,0 +1,70 @@
+.create {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.createComic-container {
+  width: 80%;
+}
+
+.comic-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.create-button {
+  grid-column: 2 / 3;
+  justify-self: end;
+}
+
+/* Optional: Styling for the checkboxes */
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Additional styling to arrange the fields */
+.title {
+  grid-column: 1 / 3;
+}
+
+.author {
+  grid-column: 1 / 3;
+}
+
+.description {
+  grid-column: 1 / 3;
+}
+
+.form-checkbox {
+  display: inline-block;
+  width: auto;
+  margin-right: 5px; /* Adjust as needed */
+}
+
+.checkbox-label {
+  display: inline-block;
+  vertical-align: middle; /* Aligns label with checkbox */
+}
+
+/* Hide default checkbox appearance */
+.form-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #ccc; /* Optional: Add border for styling */
+  width: 15px; /* Adjust size as needed */
+  height: 15px; /* Adjust size as needed */
+  border-radius: 3px; /* Optional: Add border-radius for styling */
+  background-color: white;
+}
+
+.form-checkbox:checked {
+  background-color: #007bff; /* Change background color when checked */
+}
