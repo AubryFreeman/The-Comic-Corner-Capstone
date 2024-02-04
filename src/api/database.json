@@ -111,6 +111,11 @@
     {
       "id": 7,
       "name": "Luxury"
+    },
+    {
+      "comicId": 7,
+      "categoryId": 1,
+      "id": 8
     }
   ],
   "genres": [
@@ -141,6 +146,11 @@
     {
       "id": 7,
       "name": "Mystery"
+    },
+    {
+      "comicId": 7,
+      "genreId": 1,
+      "id": 8
     }
   ],
   "artStyles": [
@@ -163,6 +173,11 @@
     {
       "id": 5,
       "name": "Sin City"
+    },
+    {
+      "comicId": 7,
+      "artStyleId": 1,
+      "id": 6
     }
   ],
   "languages": [
@@ -193,6 +208,11 @@
     {
       "id": 7,
       "name": "Chinese"
+    },
+    {
+      "comicId": 7,
+      "languageId": 1,
+      "id": 8
     }
   ]
 }
