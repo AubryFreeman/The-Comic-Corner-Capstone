@@ -30,8 +30,7 @@ export const Comics = () => {
             key={comic.id}
             onClick={() => handleComicClick(comic.id)}
           >
-            <header className="comic-info">{comic.name}</header>
-            {/* <div>{comic.genre}</div> */}
+            <header className="comic-info">{comic.title}</header>
           </section>
         </Link>
       ))}

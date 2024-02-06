@@ -17,45 +17,52 @@ export const ComicDetails = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    console.log("Fetching comic details for id:", id);
     getComicDetails(id).then((details) => {
+      console.log(details);
       setComicDetails(details);
     });
   }, [id]);
 
   useEffect(() => {
-    getAllCategories().then((categories) => {
-      setCategories(categories);
-    });
-    getAllGenres().then((genres) => {
-      setGenres(genres);
-    });
-    getAllArtStyles().then((artStyles) => {
-      setArtStyles(artStyles);
-    });
-    getAllLanguages().then((languages) => {
-      setLanguages(languages);
-    });
+    // getAllCategories().then((categories) => {
+    //   // console.log(categories);
+    //   setCategories(categories);
+    // });
+    // getAllGenres().then((genres) => {
+    //   // console.log(genres);
+    //   setGenres(genres);
+    // });
+    // getAllArtStyles().then((artStyles) => {
+    //   // console.log(artStyles);
+    //   setArtStyles(artStyles);
+    // });
+    // getAllLanguages().then((languages) => {
+    //   // console.log(languages);
+    //   setLanguages(languages);
+    // });
   }, []);
 
-  const getCategoryName = (categoryId) => {
-    const category = categories.find((category) => category.id === categoryId);
-    return category ? category.name : "Category not found";
-  };
+  // const getCategoryName = (categoryId) => {
+  //   const category = categories.find((category) => category.id === categoryId);
+  //   console.log(category);
+  //   return category ? category.name : "Category not found";
+  // };
 
-  const getGenreName = (genreId) => {
-    const genre = genres.find((genre) => genre.id === genreId);
-    return genre ? genre.name : "Genre not found";
-  };
+  // const getGenreName = (genreId) => {
+  //   const genre = genres.find((genre) => genre.id === genreId);
+  //   return genre ? genre.name : "Genre not found";
+  // };
 
-  const getArtStyleName = (artStyleId) => {
-    const artStyle = artStyles.find((artStyle) => artStyle.id === artStyleId);
-    return artStyle ? artStyle.name : "Art style not found";
-  };
+  // const getArtStyleName = (artStyleId) => {
+  //   const artStyle = artStyles.find((artStyle) => artStyle.id === artStyleId);
+  //   return artStyle ? artStyle.name : "Art style not found";
+  // };
 
-  const getLanguageName = (languageId) => {
-    const language = languages.find((language) => language.id === languageId);
-    return language ? language.name : "Language not found";
-  };
+  // const getLanguageName = (languageId) => {
+  //   const language = languages.find((language) => language.id === languageId);
+  //   return language ? language.name : "Language not found";
+  // };
 
   if (!comicDetails) {
     return <div>Loading...</div>;
@@ -63,26 +70,24 @@ export const ComicDetails = () => {
 
   return (
     <div className="container">
-      <h2 className="header-container text-light">{comicDetails.name}</h2>
-      <div className="id-container text-light">
-        {/* User ID: {comicDetails.userId} */}
-      </div>
+      <h2 className="header-container text-light">{comicDetails.title}</h2>
+      <div className="id-container text-light"></div>
       <div className="category-container text-light">
-        Category: {getCategoryName(comicDetails.categoryId)}
+        Category: {comicDetails.category.name}
       </div>
       <div className="genre-container text-light">
-        Genre: {getGenreName(comicDetails.genreId)}
+        Genre: {comicDetails.genre.name}
       </div>
-      <div className="artstyle-container text-light">
-        Art Style: {getArtStyleName(comicDetails.artStyleId)}
+      <div className="artStyle-container text-light">
+        Art Style: {comicDetails.artStyle.name}
       </div>
       <div className="language-container text-light">
-        Language: {getLanguageName(comicDetails.languageId)}
+        Language: {comicDetails.language.name}
       </div>
-      <div className="pagelength-container text-light">
+      <div className="pageLength-container text-light">
         Page Length: {comicDetails.pageLength}
       </div>
-      <div className="agerestriction-container text-light">
+      <div className="ageRestriction-container text-light">
         Age Restriction: {comicDetails.ageRestriction}
       </div>
     </div>

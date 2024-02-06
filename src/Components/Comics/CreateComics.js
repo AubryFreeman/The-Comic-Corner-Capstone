@@ -1,28 +1,40 @@
 import React, { useEffect, useState } from "react";
 import "./CreateComic.css";
 import {
-  addNewComicArtStyle,
-  addNewComicCategory,
-  addNewComicGenre,
-  addNewComicLanguage,
   getAllArtStyles,
   getAllCategories,
   getAllGenres,
   getAllLanguages,
   saveComic,
 } from "../Services/ComicService.js";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const CreateComics = () => {
+  const [comic, setComic] = useState({
+    // id: 0,
+    title: "",
+    author: "",
+    description: "",
+    userId: 0,
+    categoryId: 0,
+    genreId: 0,
+    artStyleId: 0,
+    languageId: 0,
+    pageLength: 0,
+    ageRestriction: "",
+  });
   const [categoryArray, setCategoryArray] = useState([]);
   const [genreArray, setGenreArray] = useState([]);
   const [artStyleArray, setArtStyleArray] = useState([]);
   const [languageArray, setLanguageArray] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState([]);
-  const [selectedGenre, setSelectedGenre] = useState([]);
-  const [selectedArtStyle, setSelectedArtStyle] = useState([]);
-  const [selectedLanguage, setSelectedLanguage] = useState([]);
-  const [createdComicId, setCreatedComicId] = useState(0);
+  // const [title, setTitle] = useState("");
+  // const [author, setAuthor] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [category, setCategory] = useState(0);
+  // const [genre, setGenre] = useState(0);
+  // const [artStyle, setArtStyle] = useState(0);
+  // const [language, setLanguage] = useState(0);
+  // const [modifiedComic, setModifiedComic] = useState({});
 
   const { comicId } = useParams();
 
@@ -47,102 +59,49 @@ export const CreateComics = () => {
     });
   }, []);
 
-  useEffect(() => {
-    if (createdComicId !== 0) {
-      selectedCategory.map((category) => {
-        const comicCategoryObject = {
-          comicId: createdComicId,
-          categoryId: category.id,
-        };
-        return addNewComicCategory(comicCategoryObject);
-      });
-    }
-  }, [createdComicId, selectedCategory]);
+  const handleChange = (event) => {
+    const comicObject = structuredClone(comic);
+    switch (event.target.name) {
+      case "title":
+        comicObject.title = event.target.value;
+        setComic(comicObject);
+        break;
+      case "author":
+        comicObject.author = event.target.value;
+        setComic(comicObject);
+        break;
+      case "description":
+        comicObject.description = event.target.value;
+        setComic(comicObject);
+        break;
+      case "category":
+        comicObject.categoryId = +event.target.value;
+        setComic(comicObject);
+        break;
+      case "genre":
+        comicObject.genreId = +event.target.value;
+        setComic(comicObject);
+        break;
+      case "artStyle":
+        comicObject.artStyleId = +event.target.value;
+        setComic(comicObject);
+        break;
+      case "language":
+        comicObject.languageId = +event.target.value;
+        setComic(comicObject);
+        break;
 
-  useEffect(() => {
-    if (createdComicId !== 0) {
-      selectedGenre.map((genre) => {
-        const comicGenreObject = {
-          comicId: createdComicId,
-          genreId: genre.id,
-        };
-        return addNewComicGenre(comicGenreObject);
-      });
+      default:
+        break;
     }
-  }, [createdComicId, selectedGenre]);
-
-  useEffect(() => {
-    if (createdComicId !== 0) {
-      selectedArtStyle.map((artStyle) => {
-        const comicArtStyleObject = {
-          comicId: createdComicId,
-          artStyleId: artStyle.id,
-        };
-        return addNewComicArtStyle(comicArtStyleObject);
-      });
-    }
-  }, [createdComicId, selectedArtStyle]);
-
-  useEffect(() => {
-    if (createdComicId !== 0) {
-      selectedLanguage.map((language) => {
-        const comicLanguageObject = {
-          comicId: createdComicId,
-          languageId: language.id,
-        };
-        return addNewComicLanguage(comicLanguageObject);
-      });
-    }
-  }, [createdComicId, selectedLanguage]);
-
-  const handleCategoryChange = (category) => {
-    setSelectedCategory((prevArray) => {
-      if (prevArray.includes(category)) {
-        return prevArray.filter((choice) => choice !== category);
-      } else {
-        return [...prevArray, category];
-      }
-    });
-  };
-  const handleGenreChange = (genre) => {
-    setSelectedGenre((prevArray) => {
-      if (prevArray.includes(genre)) {
-        return prevArray.filter((choice) => choice !== genre);
-      } else {
-        return [...prevArray, genre];
-      }
-    });
-  };
-  const handleArtStyleChange = (artStyle) => {
-    setSelectedArtStyle((prevArray) => {
-      if (prevArray.includes(artStyle)) {
-        return prevArray.filter((choice) => choice !== artStyle);
-      } else {
-        return [...prevArray, artStyle];
-      }
-    });
-  };
-  const handleLanguageChange = (language) => {
-    setSelectedLanguage((prevArray) => {
-      if (prevArray.includes(language)) {
-        return prevArray.filter((choice) => choice !== language);
-      } else {
-        return [...prevArray, language];
-      }
-    });
   };
 
-  const handleCreateButtonCLick = async (event) => {
+  const navigate = useNavigate();
+
+  const handleCreateComic = (event) => {
     event.preventDefault();
-    const comicObject = {
-      categoryId: selectedCategory,
-      genreId: selectedGenre,
-      artStyleId: selectedArtStyle,
-      languageId: selectedLanguage,
-      comicId: +comicId,
-    };
-    await saveComic(comicObject).then((res) => {
-      setCreatedComicId(res.id);
+    saveComic(comic).then(() => {
+      navigate(`/comics`);
     });
   };
 
@@ -158,6 +117,11 @@ export const CreateComics = () => {
                 type="text"
                 className="form-control"
                 placeholder="Comics Title"
+                name="title"
+                onChange={handleChange}
+                // onChange={() => {
+                //   handleChange(category.id);
+                // }}
               ></input>
             </div>
           </fieldset>
@@ -168,6 +132,11 @@ export const CreateComics = () => {
                 type="text"
                 className="form-control"
                 placeholder="Authors Name"
+                name="author"
+                onChange={handleChange}
+                // onChange={() => {
+                //   handleChange(category.id);
+                // }}
               ></input>
             </div>
           </fieldset>
@@ -178,6 +147,11 @@ export const CreateComics = () => {
                 type="text"
                 className="form-control"
                 placeholder="Comics Description"
+                name="description"
+                onChange={handleChange}
+                // onChange={() => {
+                //   handleChange(category.id);
+                // }}
               ></input>
             </div>
           </fieldset>
@@ -187,12 +161,11 @@ export const CreateComics = () => {
               {categoryArray.map((category) => (
                 <div key={category.id} className="category-option">
                   <input
-                    type="checkbox"
-                    name="Category"
+                    type="radio"
+                    name="category"
                     value={category.id}
-                    onChange={() => {
-                      handleCategoryChange(category);
-                    }}
+                    // checked={selectedCategory.includes(category.id)}
+                    onChange={handleChange}
                   />
                   <label htmlFor={`category${category.id}`}>
                     {category.name}
@@ -201,19 +174,17 @@ export const CreateComics = () => {
               ))}
             </div>
           </fieldset>
-
           <fieldset className="genre">
             <div className="genre-list">
               <h3>Genre</h3>
               {genreArray.map((genre) => (
                 <div key={genre.id} className="genre-option">
                   <input
-                    type="checkbox"
-                    name="Genre"
+                    type="radio"
+                    name="genre"
                     value={genre.id}
-                    onChange={() => {
-                      handleGenreChange(genre);
-                    }}
+                    // checked={selectedGenre.includes(genre.id)}
+                    onChange={handleChange}
                   />
                   <label htmlFor={`category${genre.id}`}>{genre.name}</label>
                 </div>
@@ -226,14 +197,13 @@ export const CreateComics = () => {
               {artStyleArray.map((artStyle) => (
                 <div key={artStyle.id} className="artStyle-option">
                   <input
-                    type="checkbox"
-                    name="Art Style"
+                    type="radio"
+                    name="artStyle"
                     value={artStyle.id}
-                    onChange={() => {
-                      handleArtStyleChange(artStyle);
-                    }}
+                    // checked={selectedArtStyle.includes(artStyle.id)}
+                    onChange={handleChange}
                   />
-                  <label htmlFor={`category${artStyle.id}`}>
+                  <label htmlFor={`artStyle${artStyle.id}`}>
                     {artStyle.name}
                   </label>
                 </div>
@@ -246,21 +216,20 @@ export const CreateComics = () => {
               {languageArray.map((language) => (
                 <div key={language.id} className="language-option">
                   <input
-                    type="checkbox"
-                    name="Language"
+                    type="radio"
+                    name="language"
                     value={language.id}
-                    onChange={() => {
-                      handleLanguageChange(language);
-                    }}
+                    // checked={selectedLanguage.includes(language.id)}
+                    onChange={handleChange}
                   />
-                  <label htmlFor={`category${language.id}`}>
+                  <label htmlFor={`language${language.id}`}>
                     {language.name}
                   </label>
                 </div>
               ))}
             </div>
           </fieldset>
-          <fieldset>
+          {/* <fieldset>
             <div className="comicLength">
               <label>Comic Length</label>
               <input
@@ -298,10 +267,9 @@ export const CreateComics = () => {
                 </label>
               </div>
             </div>
-          </fieldset>
-
+          </fieldset> */}
           <fieldset>
-            <button className="create-button" onClick={handleCreateButtonCLick}>
+            <button className="create-button" onClick={handleCreateComic}>
               Create
             </button>
           </fieldset>
