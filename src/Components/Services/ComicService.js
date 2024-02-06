@@ -2,6 +2,12 @@ export const getAllComics = () => {
   return fetch("http://localhost:8088/comics").then((res) => res.json());
 };
 
+export const getComicById = (comicId) => {
+  return fetch(`http://localhost:8088/comics/${comicId}`).then((res) =>
+    res.json()
+  );
+};
+
 export const getComicDetails = (comicId) => {
   return fetch(
     `http://localhost:8088/comics/${comicId}?_expand=category&_expand=genre&_expand=artStyle&_expand=language`
@@ -37,6 +43,22 @@ export const saveComic = (comic) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(comic),
+  });
+};
+
+export const deleteComic = (comicId) => {
+  return fetch(`http://localhost:8088/comics/${comicId}`, {
+    method: "DELETE",
+  });
+};
+
+export const editComic = (comicId, updatedComic) => {
+  return fetch(`http://localhost:8088/comics/${comicId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedComic),
   });
 };
 

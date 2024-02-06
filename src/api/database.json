@@ -28,17 +28,17 @@
   ],
   "comics": [
     {
-      "id": 1,
       "title": "Comic1",
       "author": "user",
-      "description": "description",
+      "description": "work",
       "userId": 1,
       "categoryId": 1,
       "genreId": 1,
       "artStyleId": 3,
       "languageId": 1,
       "pageLength": 25,
-      "ageRestriction": "yes"
+      "ageRestriction": "yes",
+      "id": 1
     },
     {
       "id": 2,
@@ -78,32 +78,6 @@
       "languageId": 4,
       "pageLength": 30,
       "ageRestriction": "no"
-    },
-    {
-      "id": 5,
-      "title": "Comic5",
-      "author": "user",
-      "description": "description",
-      "userId": 5,
-      "categoryId": 5,
-      "genreId": 5,
-      "artStyleId": 1,
-      "languageId": 5,
-      "pageLength": 10,
-      "ageRestriction": "yes"
-    },
-    {
-      "title": "I FINALLY GOT IT TO WORK",
-      "author": "AUBRY FREEMAN",
-      "description": "LETS GOOOOO",
-      "userId": 4,
-      "categoryId": 1,
-      "genreId": 6,
-      "artStyleId": 2,
-      "languageId": 1,
-      "pageLength": 30,
-      "ageRestriction": "no",
-      "id": 6
     }
   ],
   "categories": [

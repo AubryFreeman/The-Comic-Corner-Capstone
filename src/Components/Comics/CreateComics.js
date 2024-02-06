@@ -7,11 +7,10 @@ import {
   getAllLanguages,
   saveComic,
 } from "../Services/ComicService.js";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const CreateComics = () => {
   const [comic, setComic] = useState({
-    // id: 0,
     title: "",
     author: "",
     description: "",
@@ -27,16 +26,6 @@ export const CreateComics = () => {
   const [genreArray, setGenreArray] = useState([]);
   const [artStyleArray, setArtStyleArray] = useState([]);
   const [languageArray, setLanguageArray] = useState([]);
-  // const [title, setTitle] = useState("");
-  // const [author, setAuthor] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [category, setCategory] = useState(0);
-  // const [genre, setGenre] = useState(0);
-  // const [artStyle, setArtStyle] = useState(0);
-  // const [language, setLanguage] = useState(0);
-  // const [modifiedComic, setModifiedComic] = useState({});
-
-  const { comicId } = useParams();
 
   useEffect(() => {
     getAllCategories().then((res) => {
@@ -90,6 +79,14 @@ export const CreateComics = () => {
         comicObject.languageId = +event.target.value;
         setComic(comicObject);
         break;
+      case "pageLength":
+        comicObject.pageLength = +event.target.value;
+        setComic(comicObject);
+        break;
+      case "ageRestriction":
+        comicObject.ageRestriction = event.target.value;
+        setComic(comicObject);
+        break;
 
       default:
         break;
@@ -119,9 +116,6 @@ export const CreateComics = () => {
                 placeholder="Comics Title"
                 name="title"
                 onChange={handleChange}
-                // onChange={() => {
-                //   handleChange(category.id);
-                // }}
               ></input>
             </div>
           </fieldset>
@@ -134,9 +128,6 @@ export const CreateComics = () => {
                 placeholder="Authors Name"
                 name="author"
                 onChange={handleChange}
-                // onChange={() => {
-                //   handleChange(category.id);
-                // }}
               ></input>
             </div>
           </fieldset>
@@ -149,9 +140,6 @@ export const CreateComics = () => {
                 placeholder="Comics Description"
                 name="description"
                 onChange={handleChange}
-                // onChange={() => {
-                //   handleChange(category.id);
-                // }}
               ></input>
             </div>
           </fieldset>
@@ -164,7 +152,6 @@ export const CreateComics = () => {
                     type="radio"
                     name="category"
                     value={category.id}
-                    // checked={selectedCategory.includes(category.id)}
                     onChange={handleChange}
                   />
                   <label htmlFor={`category${category.id}`}>
@@ -183,7 +170,6 @@ export const CreateComics = () => {
                     type="radio"
                     name="genre"
                     value={genre.id}
-                    // checked={selectedGenre.includes(genre.id)}
                     onChange={handleChange}
                   />
                   <label htmlFor={`category${genre.id}`}>{genre.name}</label>
@@ -200,7 +186,6 @@ export const CreateComics = () => {
                     type="radio"
                     name="artStyle"
                     value={artStyle.id}
-                    // checked={selectedArtStyle.includes(artStyle.id)}
                     onChange={handleChange}
                   />
                   <label htmlFor={`artStyle${artStyle.id}`}>
@@ -219,7 +204,6 @@ export const CreateComics = () => {
                     type="radio"
                     name="language"
                     value={language.id}
-                    // checked={selectedLanguage.includes(language.id)}
                     onChange={handleChange}
                   />
                   <label htmlFor={`language${language.id}`}>
@@ -229,26 +213,28 @@ export const CreateComics = () => {
               ))}
             </div>
           </fieldset>
-          {/* <fieldset>
+          <fieldset>
             <div className="comicLength">
               <label>Comic Length</label>
               <input
                 type="number"
                 className="form-control"
                 placeholder="Comic Length"
+                name="pageLength"
+                onChange={handleChange}
               ></input>
             </div>
           </fieldset>
           <fieldset>
             <div className="form-group">
-              <label>Age Restriction</label>
+              <label>Age Restricted?</label>
               <div>
                 <input
                   type="radio"
                   id="ageRestrictionYes"
                   name="ageRestriction"
-                  value="yes"
                   className="form-radio"
+                  onChange={handleChange}
                 />
                 <label htmlFor="ageRestrictionYes" className="radio-label">
                   Yes
@@ -259,15 +245,15 @@ export const CreateComics = () => {
                   type="radio"
                   id="ageRestrictionNo"
                   name="ageRestriction"
-                  value="no"
                   className="form-radio"
+                  onChange={handleChange}
                 />
                 <label htmlFor="ageRestrictionNo" className="radio-label">
                   No
                 </label>
               </div>
             </div>
-          </fieldset> */}
+          </fieldset>
           <fieldset>
             <button className="create-button" onClick={handleCreateComic}>
               Create

@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {
+  deleteComic,
+  getAllComics,
+  getComicById,
   getComicDetails,
-  getAllCategories,
-  getAllGenres,
-  getAllArtStyles,
-  getAllLanguages,
 } from "../Services/ComicService.js";
-import { useParams } from "react-router-dom";
-
+import { Link, useNavigate, useParams } from "react-router-dom";
 export const ComicDetails = () => {
+  const [allComics, setAllComics] = useState([]);
   const [comicDetails, setComicDetails] = useState(null);
-  const [categories, setCategories] = useState([]);
-  const [genres, setGenres] = useState([]);
-  const [artStyles, setArtStyles] = useState([]);
-  const [languages, setLanguages] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -24,45 +19,19 @@ export const ComicDetails = () => {
     });
   }, [id]);
 
-  useEffect(() => {
-    // getAllCategories().then((categories) => {
-    //   // console.log(categories);
-    //   setCategories(categories);
-    // });
-    // getAllGenres().then((genres) => {
-    //   // console.log(genres);
-    //   setGenres(genres);
-    // });
-    // getAllArtStyles().then((artStyles) => {
-    //   // console.log(artStyles);
-    //   setArtStyles(artStyles);
-    // });
-    // getAllLanguages().then((languages) => {
-    //   // console.log(languages);
-    //   setLanguages(languages);
-    // });
-  }, []);
+  const handleDeleteComic = (comicId) => {
+    deleteComic(comicId).then(() => {
+      getAllComics().then((comicsArray) => {
+        setAllComics(comicsArray);
+      });
+    });
+  };
 
-  // const getCategoryName = (categoryId) => {
-  //   const category = categories.find((category) => category.id === categoryId);
-  //   console.log(category);
-  //   return category ? category.name : "Category not found";
-  // };
+  const navigate = useNavigate();
 
-  // const getGenreName = (genreId) => {
-  //   const genre = genres.find((genre) => genre.id === genreId);
-  //   return genre ? genre.name : "Genre not found";
-  // };
+  // const handleEditComic
 
-  // const getArtStyleName = (artStyleId) => {
-  //   const artStyle = artStyles.find((artStyle) => artStyle.id === artStyleId);
-  //   return artStyle ? artStyle.name : "Art style not found";
-  // };
-
-  // const getLanguageName = (languageId) => {
-  //   const language = languages.find((language) => language.id === languageId);
-  //   return language ? language.name : "Language not found";
-  // };
+  // useEffect(() => {}, []);
 
   if (!comicDetails) {
     return <div>Loading...</div>;
@@ -70,7 +39,11 @@ export const ComicDetails = () => {
 
   return (
     <div className="container">
-      <h2 className="header-container text-light">{comicDetails.title}</h2>
+      <h1 className="header-container text-light">{comicDetails.title}</h1>
+      <h3 className="header-container text-light">{comicDetails.author}</h3>
+      <h5 className="header-container text-light">
+        {comicDetails.description}
+      </h5>
       <div className="id-container text-light"></div>
       <div className="category-container text-light">
         Category: {comicDetails.category.name}
@@ -90,6 +63,22 @@ export const ComicDetails = () => {
       <div className="ageRestriction-container text-light">
         Age Restriction: {comicDetails.ageRestriction}
       </div>
+      <fieldset>
+        <button
+          className="create-button"
+          onClick={() => navigate(`/EditComic`)}
+        >
+          Edit
+        </button>
+        <Link className="delete-link" to={`/Comics`}>
+          <button
+            className="create-button"
+            onClick={() => handleDeleteComic(comicDetails.id)}
+          >
+            Delete
+          </button>
+        </Link>
+      </fieldset>
     </div>
   );
 };
