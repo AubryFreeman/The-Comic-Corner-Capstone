@@ -29,7 +29,9 @@
   "comics": [
     {
       "id": 1,
-      "name": "Comic1",
+      "title": "Comic1",
+      "author": "user",
+      "description": "description",
       "userId": 1,
       "categoryId": 1,
       "genreId": 1,
@@ -40,7 +42,9 @@
     },
     {
       "id": 2,
-      "name": "Comic2",
+      "title": "Comic2",
+      "author": "user",
+      "description": "description",
       "userId": 2,
       "categoryId": 2,
       "genreId": 2,
@@ -51,7 +55,9 @@
     },
     {
       "id": 3,
-      "name": "Comic3",
+      "title": "Comic3",
+      "author": "user",
+      "description": "description",
       "userId": 3,
       "categoryId": 4,
       "genreId": 3,
@@ -62,7 +68,9 @@
     },
     {
       "id": 4,
-      "name": "Comic4",
+      "title": "Comic4",
+      "author": "user",
+      "description": "description",
       "userId": 4,
       "categoryId": 3,
       "genreId": 4,
@@ -73,7 +81,9 @@
     },
     {
       "id": 5,
-      "name": "Comic5",
+      "title": "Comic5",
+      "author": "user",
+      "description": "description",
       "userId": 5,
       "categoryId": 5,
       "genreId": 5,
@@ -81,6 +91,19 @@
       "languageId": 5,
       "pageLength": 10,
       "ageRestriction": "yes"
+    },
+    {
+      "title": "I FINALLY GOT IT TO WORK",
+      "author": "AUBRY FREEMAN",
+      "description": "LETS GOOOOO",
+      "userId": 4,
+      "categoryId": 1,
+      "genreId": 6,
+      "artStyleId": 2,
+      "languageId": 1,
+      "pageLength": 30,
+      "ageRestriction": "no",
+      "id": 6
     }
   ],
   "categories": [
@@ -111,11 +134,6 @@
     {
       "id": 7,
       "name": "Luxury"
-    },
-    {
-      "comicId": 7,
-      "categoryId": 1,
-      "id": 8
     }
   ],
   "genres": [
@@ -146,11 +164,6 @@
     {
       "id": 7,
       "name": "Mystery"
-    },
-    {
-      "comicId": 7,
-      "genreId": 1,
-      "id": 8
     }
   ],
   "artStyles": [
@@ -173,11 +186,6 @@
     {
       "id": 5,
       "name": "Sin City"
-    },
-    {
-      "comicId": 7,
-      "artStyleId": 1,
-      "id": 6
     }
   ],
   "languages": [
@@ -208,11 +216,6 @@
     {
       "id": 7,
       "name": "Chinese"
-    },
-    {
-      "comicId": 7,
-      "languageId": 1,
-      "id": 8
     }
   ]
 }
