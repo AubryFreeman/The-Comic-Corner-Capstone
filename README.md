@@ -77,4 +77,4 @@ When you chat with an up-and-coming comic creator about their dreams, they often
 
 But here's where my app steps in to help out.
 
-Welcome to The Comic Den: Where Imagination Knows No Bounds. No more flying under the radar for these creators who pour their souls into their art. With my app, they've got a platform to share their comics and finally get the recognition they've been craving.
+Welcome to The Comic Corner: Where Imagination Knows No Bounds. No more flying under the radar for these creators who pour their souls into their art. With my app, they've got a platform to share their comics and finally get the recognition they've been craving.

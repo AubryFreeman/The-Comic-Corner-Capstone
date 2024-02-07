@@ -27,11 +27,8 @@ export const CreateComics = ({ currentUser }) => {
   const [artStyleArray, setArtStyleArray] = useState([]);
   const [languageArray, setLanguageArray] = useState([]);
 
-  // useEffect takes a function and an array
   useEffect(() => {
-    // getAllCategories is being called from services. .then is chained to promise returned by getAllCategories
     getAllCategories().then((res) => {
-      // setCategoryArray is called with res as argument. Updates categoryArray with the array of categories fetched
       setCategoryArray(res);
     });
   }, []);
@@ -51,18 +48,12 @@ export const CreateComics = ({ currentUser }) => {
     });
   }, []);
 
-  // declare a function named handleChange
   const handleChange = (event) => {
-    // create copy of comic
     const comicObject = structuredClone(comic);
-    // checks name attribute
     switch (event.target.name) {
-      // if event has name = title this updates the title property of the comicObject with new value from inout field
       case "title":
         comicObject.title = event.target.value;
-        // updates state of comic with the new comicObject
         setComic(comicObject);
-        // exits switch block
         break;
       case "author":
         comicObject.author = event.target.value;
@@ -104,14 +95,9 @@ export const CreateComics = ({ currentUser }) => {
 
   const navigate = useNavigate();
 
-  // declares a function named handleCreateComic that takes event as a param
   const handleCreateComic = (event) => {
-    // prevents default behavior. stops default action from occurring
     event.preventDefault();
-    // calls saveComic from services and passes comic as argument. returns a promise. .then is chained to the promise
-    // lets me specify a callback function to be executed once promise is resolved
     saveComic(comic).then(() => {
-      // usesNavigate to navigate the user back to comics
       navigate(`/comics`);
     });
   };
