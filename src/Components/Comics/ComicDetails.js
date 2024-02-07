@@ -30,8 +30,6 @@ export const ComicDetails = ({ currentUser }) => {
     return <div>Loading...</div>;
   }
 
-  // isOwner will be true if there is a logged in user and if the userId associated with comicDetails matches the id
-  // of the logged in user otherwise isOwner will be false
   const isOwner = currentUser && comicDetails.userId === currentUser.id;
 
   return (
