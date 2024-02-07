@@ -24,12 +24,10 @@
   justify-self: end;
 }
 
-/* Optional: Styling for the checkboxes */
 input[type="checkbox"] {
   margin-right: 5px;
 }
 
-/* Additional styling to arrange the fields */
 .title {
   grid-column: 1 / 3;
 }
@@ -45,26 +43,25 @@ input[type="checkbox"] {
 .form-checkbox {
   display: inline-block;
   width: auto;
-  margin-right: 5px; /* Adjust as needed */
+  margin-right: 5px;
 }
 
 .checkbox-label {
   display: inline-block;
-  vertical-align: middle; /* Aligns label with checkbox */
+  vertical-align: middle;
 }
 
-/* Hide default checkbox appearance */
 .form-checkbox {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  border: 1px solid #ccc; /* Optional: Add border for styling */
-  width: 15px; /* Adjust size as needed */
-  height: 15px; /* Adjust size as needed */
-  border-radius: 3px; /* Optional: Add border-radius for styling */
+  border: 1px solid #ccc;
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
   background-color: white;
 }
 
 .form-checkbox:checked {
-  background-color: #007bff; /* Change background color when checked */
+  background-color: #007bff;
 }

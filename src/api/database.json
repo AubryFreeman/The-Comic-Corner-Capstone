@@ -28,19 +28,6 @@
   ],
   "comics": [
     {
-      "title": "Comic1",
-      "author": "user",
-      "description": "work",
-      "userId": 1,
-      "categoryId": 1,
-      "genreId": 1,
-      "artStyleId": 3,
-      "languageId": 1,
-      "pageLength": 25,
-      "ageRestriction": "yes",
-      "id": 1
-    },
-    {
       "id": 2,
       "title": "Comic2",
       "author": "user",
@@ -54,30 +41,17 @@
       "ageRestriction": "no"
     },
     {
-      "id": 3,
-      "title": "Comic3",
-      "author": "user",
-      "description": "description",
-      "userId": 3,
-      "categoryId": 4,
-      "genreId": 3,
-      "artStyleId": 4,
-      "languageId": 3,
-      "pageLength": 20,
-      "ageRestriction": "yes"
-    },
-    {
-      "id": 4,
-      "title": "Comic4",
-      "author": "user",
-      "description": "description",
-      "userId": 4,
-      "categoryId": 3,
-      "genreId": 4,
-      "artStyleId": 5,
-      "languageId": 4,
-      "pageLength": 30,
-      "ageRestriction": "no"
+      "title": "1",
+      "author": "1",
+      "description": "1",
+      "userId": 1,
+      "categoryId": 2,
+      "genreId": 1,
+      "artStyleId": 1,
+      "languageId": 1,
+      "pageLength": 9,
+      "ageRestriction": "Yes",
+      "id": 3
     }
   ],
   "categories": [
