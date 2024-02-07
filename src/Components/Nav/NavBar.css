@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #212529; /* Dark gray background */
+  background-color: #212529;
   padding: 1rem;
-  border-bottom: 2px solid #fff; /* White border bottom */
+  border-bottom: 2px solid #fff;
 }
 
 .navbar-item {
@@ -12,13 +12,13 @@
 }
 
 .navbar-link {
-  color: #fff; /* White text */
+  color: #fff;
   text-decoration: none;
   padding: 0.5rem 1rem;
-  transition: background-color 0.3s ease; /* Smooth transition on hover */
+  transition: background-color 0.3s ease;
 }
 
 .navbar-link:hover {
-  background-color: #ffc107; /* Yellow background on hover */
-  color: #212529; /* Dark gray text on hover */
+  background-color: #ffc107;
+  color: #212529;
 }

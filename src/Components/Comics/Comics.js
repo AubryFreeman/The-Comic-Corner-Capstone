@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { deleteComic, getAllComics } from "../Services/ComicService.js";
+import { getAllComics } from "../Services/ComicService.js";
 import { ComicDetails } from "./ComicDetails.js";
 import "./Comics.css";
 import { Link } from "react-router-dom";

@@ -2,19 +2,16 @@ import React, { useEffect, useState } from "react";
 import {
   deleteComic,
   getAllComics,
-  getComicById,
   getComicDetails,
 } from "../Services/ComicService.js";
 import { Link, useNavigate, useParams } from "react-router-dom";
-export const ComicDetails = () => {
-  const [allComics, setAllComics] = useState([]);
+
+export const ComicDetails = ({ currentUser }) => {
   const [comicDetails, setComicDetails] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
-    console.log("Fetching comic details for id:", id);
     getComicDetails(id).then((details) => {
-      console.log(details);
       setComicDetails(details);
     });
   }, [id]);
@@ -22,20 +19,20 @@ export const ComicDetails = () => {
   const handleDeleteComic = (comicId) => {
     deleteComic(comicId).then(() => {
       getAllComics().then((comicsArray) => {
-        setAllComics(comicsArray);
+        setComicDetails(null);
       });
     });
   };
 
   const navigate = useNavigate();
 
-  // const handleEditComic
-
-  // useEffect(() => {}, []);
-
   if (!comicDetails) {
     return <div>Loading...</div>;
   }
+
+  // isOwner will be true if there is a logged in user and if the userId associated with comicDetails matches the id
+  // of the logged in user otherwise isOwner will be false
+  const isOwner = currentUser && comicDetails.userId === currentUser.id;
 
   return (
     <div className="container">
@@ -63,22 +60,24 @@ export const ComicDetails = () => {
       <div className="ageRestriction-container text-light">
         Age Restriction: {comicDetails.ageRestriction}
       </div>
-      <fieldset>
-        <button
-          className="create-button"
-          onClick={() => navigate(`/EditComic`)}
-        >
-          Edit
-        </button>
-        <Link className="delete-link" to={`/Comics`}>
+      {isOwner && (
+        <fieldset>
           <button
-            className="create-button"
-            onClick={() => handleDeleteComic(comicDetails.id)}
+            className="edit-button"
+            onClick={() => navigate(`/EditComic/${id}`)}
           >
-            Delete
+            Edit
           </button>
-        </Link>
-      </fieldset>
+          <Link className="delete-link" to={`/Comics`}>
+            <button
+              className="delete-button"
+              onClick={() => handleDeleteComic(comicDetails.id)}
+            >
+              Delete
+            </button>
+          </Link>
+        </fieldset>
+      )}
     </div>
   );
 };

@@ -10,10 +10,9 @@ export const Login = () => {
   const loginHandler = (event) => {
     event.preventDefault();
 
-    getUserByEmail(email).then((user) => {
-      console.log(user);
-      if (user.length === 1) {
-        user = user[0];
+    return getUserByEmail(email).then((foundUsers) => {
+      if (foundUsers.length === 1) {
+        const user = foundUsers[0];
         localStorage.setItem(
           "comic_user",
           JSON.stringify({
@@ -57,6 +56,7 @@ export const Login = () => {
           </fieldset>
         </form>
       </section>
+      <section>{/* <Link to="/register">Register Here!</Link> */}</section>
     </main>
   );
 };

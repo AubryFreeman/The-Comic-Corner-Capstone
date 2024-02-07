@@ -9,26 +9,29 @@ import {
 } from "../Services/ComicService.js";
 import { useNavigate } from "react-router-dom";
 
-export const CreateComics = () => {
+export const CreateComics = ({ currentUser }) => {
   const [comic, setComic] = useState({
     title: "",
     author: "",
     description: "",
-    userId: 0,
+    userId: currentUser.id,
     categoryId: 0,
     genreId: 0,
     artStyleId: 0,
     languageId: 0,
     pageLength: 0,
-    ageRestriction: "",
+    ageRestriction: "No",
   });
   const [categoryArray, setCategoryArray] = useState([]);
   const [genreArray, setGenreArray] = useState([]);
   const [artStyleArray, setArtStyleArray] = useState([]);
   const [languageArray, setLanguageArray] = useState([]);
 
+  // useEffect takes a function and an array
   useEffect(() => {
+    // getAllCategories is being called from services. .then is chained to promise returned by getAllCategories
     getAllCategories().then((res) => {
+      // setCategoryArray is called with res as argument. Updates categoryArray with the array of categories fetched
       setCategoryArray(res);
     });
   }, []);
@@ -48,12 +51,18 @@ export const CreateComics = () => {
     });
   }, []);
 
+  // declare a function named handleChange
   const handleChange = (event) => {
+    // create copy of comic
     const comicObject = structuredClone(comic);
+    // checks name attribute
     switch (event.target.name) {
+      // if event has name = title this updates the title property of the comicObject with new value from inout field
       case "title":
         comicObject.title = event.target.value;
+        // updates state of comic with the new comicObject
         setComic(comicObject);
+        // exits switch block
         break;
       case "author":
         comicObject.author = event.target.value;
@@ -95,9 +104,14 @@ export const CreateComics = () => {
 
   const navigate = useNavigate();
 
+  // declares a function named handleCreateComic that takes event as a param
   const handleCreateComic = (event) => {
+    // prevents default behavior. stops default action from occurring
     event.preventDefault();
+    // calls saveComic from services and passes comic as argument. returns a promise. .then is chained to the promise
+    // lets me specify a callback function to be executed once promise is resolved
     saveComic(comic).then(() => {
+      // usesNavigate to navigate the user back to comics
       navigate(`/comics`);
     });
   };
@@ -234,6 +248,7 @@ export const CreateComics = () => {
                   id="ageRestrictionYes"
                   name="ageRestriction"
                   className="form-radio"
+                  value="Yes"
                   onChange={handleChange}
                 />
                 <label htmlFor="ageRestrictionYes" className="radio-label">
@@ -246,6 +261,7 @@ export const CreateComics = () => {
                   id="ageRestrictionNo"
                   name="ageRestriction"
                   className="form-radio"
+                  value="No"
                   onChange={handleChange}
                 />
                 <label htmlFor="ageRestrictionNo" className="radio-label">

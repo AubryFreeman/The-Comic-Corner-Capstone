@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { editComic, getComicById } from "../Services/ComicService.js";
+import {
+  editComic,
+  getAllArtStyles,
+  getAllCategories,
+  getAllGenres,
+  getAllLanguages,
+  getComicById,
+} from "../Services/ComicService.js";
 
 export const EditComics = () => {
   const [comic, setComic] = useState({
@@ -13,33 +20,92 @@ export const EditComics = () => {
     artStyleId: 0,
     languageId: 0,
     pageLength: 0,
-    ageRestriction: "",
+    ageRestriction: "No",
   });
-  const { comicId } = useParams();
+  const [categoryArray, setCategoryArray] = useState([]);
+  const [genreArray, setGenreArray] = useState([]);
+  const [artStyleArray, setArtStyleArray] = useState([]);
+  const [languageArray, setLanguageArray] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
-    getComicById(comicId).then((res) => {
+    getComicById(id).then((res) => {
       setComic(res);
     });
-  }, [comicId]);
+  }, [id]);
+
+  useEffect(() => {
+    getAllCategories().then((res) => {
+      setCategoryArray(res);
+    });
+  }, []);
+
+  useEffect(() => {
+    getAllGenres().then((res) => {
+      setGenreArray(res);
+    });
+  }, []);
+  useEffect(() => {
+    getAllArtStyles().then((res) => {
+      setArtStyleArray(res);
+    });
+  }, []);
+  useEffect(() => {
+    getAllLanguages().then((res) => {
+      setLanguageArray(res);
+    });
+  }, []);
 
   const navigate = useNavigate();
 
   const handleEditComic = (event) => {
+    const updatedComic = structuredClone(comic);
+    switch (event.target.name) {
+      case "title":
+        updatedComic.title = event.target.value;
+        setComic(updatedComic);
+        break;
+      case "author":
+        updatedComic.author = event.target.value;
+        setComic(updatedComic);
+        break;
+      case "description":
+        updatedComic.description = event.target.value;
+        setComic(updatedComic);
+        break;
+      case "category":
+        updatedComic.categoryId = +event.target.value;
+        setComic(updatedComic);
+        break;
+      case "genre":
+        updatedComic.genreId = +event.target.value;
+        setComic(updatedComic);
+        break;
+      case "artStyle":
+        updatedComic.artStyleId = +event.target.value;
+        setComic(updatedComic);
+        break;
+      case "language":
+        updatedComic.languageId = +event.target.value;
+        setComic(updatedComic);
+        break;
+      case "pageLength":
+        updatedComic.pageLength = +event.target.value;
+        setComic(updatedComic);
+        break;
+      case "ageRestriction":
+        updatedComic.ageRestriction = event.target.value;
+        setComic(updatedComic);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  const handleUpdateComic = (event) => {
     event.preventDefault();
-    const updatedComic = {
-      title: comic.title,
-      author: comic.author,
-      description: comic.description,
-      userId: +comic.userId,
-      categoryId: +comic.categoryId,
-      genreId: +comic.genreId,
-      artStyleId: +comic.artStyleId,
-      languageId: +comic.languageId,
-      pageLength: comic.pageLength,
-      ageRestriction: comic.ageRestriction,
-    };
-    editComic(comicId, updatedComic).then(() => {
+    editComic(id, comic).then(() => {
       navigate(`/comics`);
     });
   };
@@ -75,11 +141,7 @@ export const EditComics = () => {
                 placeholder="Authors Name"
                 name="author"
                 value={comic.author}
-                onChange={(event) => {
-                  const comicCopy = { ...comic };
-                  comicCopy.author = event.target.value;
-                  setComic(comicCopy);
-                }}
+                onChange={handleEditComic}
               ></input>
             </div>
           </fieldset>
@@ -92,87 +154,82 @@ export const EditComics = () => {
                 placeholder="Comics Description"
                 name="description"
                 value={comic.description}
-                onChange={(event) => {
-                  const comicCopy = { ...comic };
-                  comicCopy.description = event.target.value;
-                  setComic(comicCopy);
-                }}
+                onChange={handleEditComic}
               ></input>
             </div>
           </fieldset>
           <fieldset className="category">
             <div className="category-list">
               <h3>Category</h3>
-              <div className="category-option">
-                <input
-                  type="radio"
-                  name="category"
-                  value={comic.categoryId}
-                  onChange={(event) => {
-                    const comicCopy = { ...comic };
-                    comicCopy.categoryId = event.target.value;
-                    setComic(comicCopy);
-                  }}
-                />
-                <label htmlFor="category">category:</label>
-              </div>
+              {categoryArray.map((category) => (
+                <div key={category.id} className="category-option">
+                  <input
+                    type="radio"
+                    name="category"
+                    value={category.id}
+                    checked={category.id === comic.categoryId ? true : false}
+                    onChange={handleEditComic}
+                  />
+                  <label htmlFor={`category${category.id}`}>
+                    {category.name}
+                  </label>
+                </div>
+              ))}
             </div>
           </fieldset>
           <fieldset className="genre">
             <div className="genre-list">
               <h3>Genre</h3>
-
-              <div className="genre-option">
-                <input
-                  type="radio"
-                  name="genre"
-                  value={comic.genreId}
-                  onChange={(event) => {
-                    const comicCopy = { ...comic };
-                    comicCopy.genreId = event.target.value;
-                    setComic(comicCopy);
-                  }}
-                />
-                <label htmlFor="genre">Genre:</label>
-              </div>
+              {genreArray.map((genre) => (
+                <div key={genre.id} className="genre-option">
+                  <input
+                    type="radio"
+                    name="genre"
+                    value={genre.id}
+                    checked={genre.id === comic.genreId ? true : false}
+                    onChange={handleEditComic}
+                  />
+                  <label htmlFor={`genre${genre.id}`}>{genre.name}</label>
+                </div>
+              ))}
             </div>
           </fieldset>
           <fieldset className="artStyle">
             <div className="artStyle-list">
               <h3>Art Style</h3>
-
-              <div className="artStyle-option">
-                <input
-                  type="radio"
-                  name="artStyle"
-                  value={comic.artStyleId}
-                  onChange={(event) => {
-                    const comicCopy = { ...comic };
-                    comicCopy.artStyleId = event.target.value;
-                    setComic(comicCopy);
-                  }}
-                />
-                <label htmlFor="artStyle">Art Style:</label>
-              </div>
+              {artStyleArray.map((artStyle) => (
+                <div key={artStyle.id} className="artStyle-option">
+                  <input
+                    type="radio"
+                    name="artStyle"
+                    value={artStyle.id}
+                    checked={artStyle.id === comic.artStyleId ? true : false}
+                    onChange={handleEditComic}
+                  />
+                  <label htmlFor={`artStyle${artStyle.id}`}>
+                    {artStyle.name}
+                  </label>
+                </div>
+              ))}
             </div>
           </fieldset>
           <fieldset className="language">
             <div className="language-list">
               <h3>Language</h3>
-
-              <div className="language-option">
-                <input
-                  type="radio"
-                  name="language"
-                  value={comic.languageId}
-                  onChange={(event) => {
-                    const comicCopy = { ...comic };
-                    comicCopy.languageId = event.target.value;
-                    setComic(comicCopy);
-                  }}
-                />
-                <label htmlFor="language">Language:</label>
-              </div>
+              {languageArray.map((language) => (
+                <div key={language.id} className="language-option">
+                  <input
+                    type="radio"
+                    name="language"
+                    value={language.id}
+                    checked={language.id === comic.languageId ? true : false}
+                    onChange={handleEditComic}
+                  />
+                  <label htmlFor={`language${language.id}`}>
+                    {language.name}
+                  </label>
+                </div>
+              ))}
             </div>
           </fieldset>
           <fieldset>
@@ -184,11 +241,7 @@ export const EditComics = () => {
                 placeholder="Comic Length"
                 name="pageLength"
                 value={comic.pageLength}
-                onChange={(event) => {
-                  const comicCopy = { ...comic };
-                  comicCopy.pageLength = event.target.value;
-                  setComic(comicCopy);
-                }}
+                onChange={handleEditComic}
               ></input>
             </div>
           </fieldset>
@@ -201,12 +254,9 @@ export const EditComics = () => {
                   id="ageRestrictionYes"
                   name="ageRestriction"
                   className="form-radio"
-                  value={comic.ageRestriction}
-                  onChange={(event) => {
-                    const comicCopy = { ...comic };
-                    comicCopy.ageRestriction = event.target.value;
-                    setComic(comicCopy);
-                  }}
+                  value="Yes"
+                  checked={comic.ageRestriction === "Yes" ? true : false}
+                  onChange={handleEditComic}
                 />
                 <label htmlFor="ageRestrictionYes" className="radio-label">
                   Yes
@@ -218,12 +268,9 @@ export const EditComics = () => {
                   id="ageRestrictionNo"
                   name="ageRestriction"
                   className="form-radio"
-                  value={comic.ageRestriction}
-                  onChange={(event) => {
-                    const comicCopy = { ...comic };
-                    comicCopy.ageRestriction = event.target.value;
-                    setComic(comicCopy);
-                  }}
+                  value="No"
+                  checked={comic.ageRestriction === "No" ? true : false}
+                  onChange={handleEditComic}
                 />
                 <label htmlFor="ageRestrictionNo" className="radio-label">
                   No
@@ -232,7 +279,7 @@ export const EditComics = () => {
             </div>
           </fieldset>
           <fieldset>
-            <button className="edit-button" onClick={handleEditComic}>
+            <button className="edit-button" onClick={handleUpdateComic}>
               Update
             </button>
           </fieldset>
