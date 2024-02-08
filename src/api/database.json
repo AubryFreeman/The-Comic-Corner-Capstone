@@ -26,34 +26,7 @@
       "email": "user5@example.com"
     }
   ],
-  "comics": [
-    {
-      "id": 2,
-      "title": "Comic2",
-      "author": "user",
-      "description": "description",
-      "userId": 2,
-      "categoryId": 2,
-      "genreId": 2,
-      "artStyleId": 2,
-      "languageId": 2,
-      "pageLength": 15,
-      "ageRestriction": "no"
-    },
-    {
-      "title": "1",
-      "author": "1",
-      "description": "1",
-      "userId": 1,
-      "categoryId": 2,
-      "genreId": 1,
-      "artStyleId": 1,
-      "languageId": 1,
-      "pageLength": 9,
-      "ageRestriction": "Yes",
-      "id": 3
-    }
-  ],
+  "comics": [],
   "categories": [
     {
       "id": 1,
