@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Welcome.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Welcome = () => {
-  return (
-    <div className="welcome-container text-light">
-      <h1>
-        <span>WELCOME TO</span>
+  const [showText, setShowText] = useState(false);
 
-        <span>THE COMIC CORNER</span>
-      </h1>
-      <h2>Where Imagination Knows No Bounds</h2>
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowText(true);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="welcome-container">
+      {showText && (
+        <>
+          <h1>
+            <span>WELCOME TO</span>
+            <span>THE COMIC CORNER</span>
+          </h1>
+          <h2>Where Imagination Knows No Bounds</h2>
+        </>
+      )}
     </div>
   );
 };

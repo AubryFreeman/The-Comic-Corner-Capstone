@@ -1,16 +1,53 @@
 .welcome-container {
   background-color: #212529;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
+  background-image: url("/Users/aub/workspace/the-comic-den-capstone/src/images/backgroundTwo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+.welcome-container h1,
+.welcome-container h2 {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-container h1 span:nth-child(1) {
+  animation-delay: 0.5s;
+}
+
+.welcome-container h1 span:nth-child(2) {
+  animation-delay: 0.5s; /* Delay the animation for the second line */
+}
+
+.welcome-container h2 {
+  animation-delay: 1s; /* Delay the animation for the third line */
+}
+
+/* Additional styling for the text */
 .welcome-container h1 {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  font-size: 3rem;
+  font-family: "Marker Felt", fantasy;
+  font-weight: bold;
+  font-size: 4rem;
   margin-bottom: 0.5rem;
 }
 
@@ -19,23 +56,23 @@
 }
 
 .welcome-container h1 span:nth-child(2) {
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 .welcome-container h1 span:nth-child(3) {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .welcome-container h1 span:first-child {
-  color: #feda6a; /* Yellow */
+  color: #0095ff;
 }
 
 .welcome-container h1 span:last-child {
-  color: #ff4500; /* Orange Red */
+  color: #fd3030;
 }
 
 .welcome-container h2 {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "Marker Felt", fantasy;
   font-size: 1.5rem;
-  color: #fff;
+  color: #ffc107;
 }

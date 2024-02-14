@@ -1,29 +1,48 @@
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .container-login {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #212529; /* Light gray background */
+  background-image: url("/Users/aub/workspace/the-comic-den-capstone/src/images/backgroundOne.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .form-login {
   width: 400px;
   padding: 20px;
   border-radius: 10px;
-  background-color: #343a40; /* Dark gray background */
+  background-color: transparent;
+  animation: fadeInText 1s ease forwards; /* Apply animation to the form */
+}
+
+.form-login h1,
+.form-login h2 {
+  margin-bottom: 20px;
+  color: #fff; /* White text */
+  font-family: "Marker Felt", fantasy;
+  font-weight: bold;
 }
 
 .form-login h1 {
-  margin-bottom: 20px;
-  color: #fff; /* White text */
   font-size: 36px;
   text-align: center;
 }
 
 .form-login h2 {
-  margin-bottom: 30px;
-  color: #ffc107; /* Yellow text */
-  font-size: 24px;
+  font-size: 30px;
   text-align: center;
 }
 

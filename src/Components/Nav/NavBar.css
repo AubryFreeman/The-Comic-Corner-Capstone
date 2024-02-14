@@ -2,9 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #212529;
+  background-color: transparent;
   padding: 1rem;
   border-bottom: 2px solid #fff;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 .navbar-item {
@@ -16,9 +19,18 @@
   text-decoration: none;
   padding: 0.5rem 1rem;
   transition: background-color 0.3s ease;
+  --hover-color: #ffc107;
 }
 
 .navbar-link:hover {
-  background-color: #ffc107;
+  background-color: var(--hover-color);
   color: #212529;
+}
+
+.navbar-link:nth-child(2):hover {
+  --hover-color: #0095ff;
+}
+
+.navbar-link:nth-child(3):hover {
+  --hover-color: #fd3030;
 }

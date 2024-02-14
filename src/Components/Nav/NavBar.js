@@ -1,9 +1,38 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
 import "./NavBar.css";
+import { useEffect } from "react";
 
 export const NavBar = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleMouseEnter = (event) => {
+      const colors = ["#ffc107", "#0095ff", "#fd3030"];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      event.target.style.setProperty("--hover-color", randomColor);
+    };
+
+    const handleMouseLeave = (event) => {
+      event.target.style.removeProperty("--hover-color");
+    };
+
+    const navbarLinks = document.querySelectorAll(".navbar-link");
+
+    navbarLinks.forEach((link) => {
+      link.addEventListener("mouseenter", handleMouseEnter);
+      link.addEventListener("mouseleave", handleMouseLeave);
+    });
+
+    return () => {
+      navbarLinks.forEach((link) => {
+        link.removeEventListener("mouseenter", handleMouseEnter);
+        link.removeEventListener("mouseleave", handleMouseLeave);
+      });
+    };
+  }, []);
+
   return (
     <ul className="navbar">
       <li className="navbar-item">
