@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Welcome.css";
+// import "../../App.c";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Welcome = () => {

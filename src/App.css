@@ -1,1 +1,11 @@
+body {
+  background-image: url("/src/images/backgroundTwo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
+#root {
+  width: 100%;
+  height: 100%;
+}
