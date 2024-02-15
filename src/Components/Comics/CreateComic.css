@@ -3,6 +3,8 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  font-family: "Marker Felt", fantasy;
+  background-image: url("/Users/aub/workspace/the-comic-den-capstone/src/images/backgroundThree.png");
 }
 
 .createComic-container {

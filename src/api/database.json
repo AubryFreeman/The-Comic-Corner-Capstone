@@ -26,7 +26,21 @@
       "email": "user5@example.com"
     }
   ],
-  "comics": [],
+  "comics": [
+    {
+      "title": "The Adventures of Greg Korte",
+      "author": "Greg Korte",
+      "description": "Greg continues to struggle with spelling return",
+      "userId": 1,
+      "categoryId": 2,
+      "genreId": 1,
+      "artStyleId": 4,
+      "languageId": 1,
+      "pageLength": 12,
+      "ageRestriction": "No",
+      "id": 1
+    }
+  ],
   "categories": [
     {
       "id": 1,
