@@ -28,6 +28,11 @@ export const CreateComics = ({ currentUser }) => {
   const [languageArray, setLanguageArray] = useState([]);
 
   useEffect(() => {
+    document.body.classList.remove("comics", "welcome", "profile", "logout");
+    document.body.classList.add("create");
+  }, []);
+
+  useEffect(() => {
     getAllCategories().then((res) => {
       setCategoryArray(res);
     });

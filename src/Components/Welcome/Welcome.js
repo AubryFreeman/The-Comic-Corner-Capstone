@@ -7,6 +7,11 @@ export const Welcome = () => {
   const [showText, setShowText] = useState(false);
 
   useEffect(() => {
+    document.body.classList.remove("comics", "create", "profile", "logout");
+    document.body.classList.add("welcome");
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setShowText(true);
     }, 500);
