@@ -14,6 +14,11 @@ export const Comics = () => {
     });
   }, []);
 
+  useEffect(() => {
+    document.body.classList.remove("welcome", "create", "profile", "logout");
+    document.body.classList.add("comics");
+  }, []);
+
   const handleComicClick = (comicId) => {
     setSelectedComicId(comicId);
   };

@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-image: url("/Users/aub/workspace/the-comic-den-capstone/src/images/backgroundFour.png");
+  /* background-image: url("/Users/aub/workspace/the-comic-den-capstone/src/images/backgroundFour.png"); */
   background-size: cover;
   background-position: center;
   min-height: 100vh;

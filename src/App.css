@@ -1,5 +1,19 @@
-body {
+body.welcome {
   background-image: url("/src/images/backgroundTwo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body.comics {
+  background-image: url("/src/images/backgroundFour.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body.create {
+  background-image: url("/src/images/backgroundThree.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
